@@ -1,0 +1,23 @@
+{
+    "name":        "corpsee/nameless-debug",
+    "description": "Nameless Debug package",
+    "license":     "GPLv3",
+    "authors":     [
+        {
+            "name":  "Corpsee",
+            "email": "poisoncorpsee@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Nameless\\Debug\\":        "src",
+            "Nameless\\Debug\\Tests\\": "tests/src"
+        }
+    },
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.1.*"
+    }
+}
