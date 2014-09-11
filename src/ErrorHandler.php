@@ -22,6 +22,7 @@ class ErrorHandler
      * @var array
      */
     protected $levels = [
+        E_ERROR             => 'Fatal',
         E_WARNING           => 'Warning',
         E_NOTICE            => 'Notice',
         E_USER_ERROR        => 'User Error',
@@ -100,7 +101,29 @@ class ErrorHandler
             return false;
         } elseif ($this->level & $level) {
             $exception_level = isset($this->levels[$level]) ? $this->levels[$level] : $level;
-            throw new \ErrorException("{$exception_level}: {$message} in {$file} line {$line}", 0, $level, $file, $line);
+            $exception       = new \ErrorException("{$exception_level}: {$message} in {$file} line {$line}", $level, $level, $file, $line);
+
+            $this->logException($exception);
+
+            throw $exception;
         }
     }
+
+    /**
+     * @throws \ErrorException
+     */
+    public function handleFatalError()
+    {
+        $error = error_get_last();
+
+        if (isset($error['type']) && in_array($error['type'], [E_ERROR, E_CORE_ERROR, E_COMPILE_ERROR, E_PARSE])) {
+            $exception = new \ErrorException($error['message'], $error['type'], $error['type'], $error['file'], $error['line']);
+
+            $this->logException($exception);
+
+            throw $exception;
+        }
+    }
+
+    public function logException() {}
 }
