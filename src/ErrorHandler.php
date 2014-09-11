@@ -18,7 +18,6 @@ namespace Nameless\Debug;
  */
 class ErrorHandler
 {
-    //TODO: logging exception/shutdown
     /**
      * @var array
      */
@@ -32,7 +31,58 @@ class ErrorHandler
         E_RECOVERABLE_ERROR => 'Catchable Fatal Error',
         E_DEPRECATED        => 'Deprecated',
         E_USER_DEPRECATED   => 'User Deprecated',
+        E_ERROR             => 'Error',
+        E_CORE_ERROR        => 'Core Error',
+        E_COMPILE_ERROR     => 'Compile Error',
+        E_PARSE             => 'Parse',
     ];
+
+    /**
+     * @var integer
+     */
+    protected $level;
+
+    /**
+     * @var boolean
+     */
+    protected $displayErrors;
+
+    /**
+     * @param integer $level
+     * @param boolean $displayErrors
+     */
+    public function __construct($level = null, $displayErrors = null)
+    {
+        $this->setLevel($level);
+        $this->setDisplayErrors($displayErrors);
+    }
+
+    /**
+     * @param integer $level
+     * @param boolean $displayErrors
+     */
+    public static function register($level = null, $displayErrors = null)
+    {
+        $handler = new static($level, $displayErrors);
+        set_error_handler([$handler, 'handleError']);
+        register_shutdown_function([$handler, 'handleFatalError']);
+    }
+
+    /**
+     * @param integer $level
+     */
+    protected function setLevel($level = null)
+    {
+        $this->level = (null === $level) ? error_reporting() : (integer)$level;
+    }
+
+    /**
+     * @param boolean $displayErrors
+     */
+    protected function setDisplayErrors($displayErrors = null)
+    {
+        $this->level = (null === $displayErrors) ? ini_get('display_errors') : (boolean)$displayErrors;
+    }
 
     /**
      * @param integer $level
@@ -40,27 +90,17 @@ class ErrorHandler
      * @param string  $file
      * @param integer $line
      *
+     * @return boolean
+     *
      * @throws \ErrorException
      */
     public function handleError($level, $message, $file, $line)
     {
-        if (error_reporting() === 0) {
-            return;
+        if (0 === $this->level) {
+            return false;
+        } elseif ($this->level & $level) {
+            $exception_level = isset($this->levels[$level]) ? $this->levels[$level] : $level;
+            throw new \ErrorException("{$exception_level}: {$message} in {$file} line {$line}", 0, $level, $file, $line);
         }
-
-        $exception_level = isset($this->levels[$level]) ? $this->levels[$level] : $level;
-        throw new \ErrorException(sprintf(
-            '%s: %s in %s line %d',
-            $exception_level,
-            $message,
-            $file,
-            $line
-        ), 0, $level, $file, $line);
-    }
-
-    public static function register()
-    {
-        $handler = new static();
-        set_error_handler(array($handler, 'handleError'));
     }
 }
