@@ -10,6 +10,8 @@
 
 namespace Nameless\Debug;
 
+use Psr\Log\LoggerInterface;
+
 /**
  * Class ErrorHandler
  *
@@ -49,13 +51,21 @@ class ErrorHandler
     protected $displayErrors;
 
     /**
-     * @param integer $level
-     * @param boolean $displayErrors
+     * @var LoggerInterface
      */
-    public function __construct($level = null, $displayErrors = null)
+    protected $logger;
+
+    /**
+     * @param integer         $level
+     * @param boolean         $displayErrors
+     * @param LoggerInterface $logger
+     */
+    public function __construct($level = null, $displayErrors = null, LoggerInterface $logger = null)
     {
         $this->setLevel($level);
         $this->setDisplayErrors($displayErrors);
+
+        $this->logger = $logger;
     }
 
     /**
@@ -125,5 +135,12 @@ class ErrorHandler
         }
     }
 
-    public function logException() {}
+    /**
+     * @param \Exception $exception
+     */
+    public function logException($exception) {
+        if (null !== $this->logger) {
+            $this->logger->log($exception->getCode(), $exception->getMessage(), (array)$exception);
+        }
+    }
 }
