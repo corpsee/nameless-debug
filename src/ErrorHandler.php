@@ -3,14 +3,12 @@
 /**
  * Nameless Debug package
  *
- * @copyright    Copyright 2014, Corpsee.
- * @license      https://github.com/corpsee/nameless-debug/blob/master/LICENSE
- * @link         https://github.com/corpsee/nameles-debug
+ * @copyright Copyright 2014, Corpsee.
+ * @license   https://github.com/corpsee/nameless-debug/blob/master/LICENSE
+ * @link      https://github.com/corpsee/nameles-debug
  */
 
 namespace Nameless\Debug;
-
-use Psr\Log\LoggerInterface;
 
 /**
  * Class ErrorHandler
@@ -46,26 +44,12 @@ class ErrorHandler
     protected $level;
 
     /**
-     * @var boolean
+     * @param integer $level
+     * @param boolean $displayErrors
      */
-    protected $displayErrors;
-
-    /**
-     * @var LoggerInterface
-     */
-    protected $logger;
-
-    /**
-     * @param integer         $level
-     * @param boolean         $displayErrors
-     * @param LoggerInterface $logger
-     */
-    public function __construct($level = null, $displayErrors = null, LoggerInterface $logger = null)
+    public function __construct($level = null, $displayErrors = null)
     {
         $this->setLevel($level);
-        $this->setDisplayErrors($displayErrors);
-
-        $this->logger = $logger;
     }
 
     /**
@@ -88,32 +72,20 @@ class ErrorHandler
     }
 
     /**
-     * @param boolean $displayErrors
-     */
-    protected function setDisplayErrors($displayErrors = null)
-    {
-        $this->level = (null === $displayErrors) ? ini_get('display_errors') : (boolean)$displayErrors;
-    }
-
-    /**
      * @param integer $level
      * @param string  $message
      * @param string  $file
      * @param integer $line
-     *
-     * @return boolean
      *
      * @throws \ErrorException
      */
     public function handleError($level, $message, $file, $line)
     {
         if (0 === $this->level) {
-            return false;
+            return;
         } elseif ($this->level & $level) {
             $exception_level = isset($this->levels[$level]) ? $this->levels[$level] : $level;
             $exception       = new \ErrorException("{$exception_level}: {$message} in {$file} line {$line}", $level, $level, $file, $line);
-
-            $this->logException($exception);
 
             throw $exception;
         }
@@ -129,18 +101,7 @@ class ErrorHandler
         if (isset($error['type']) && in_array($error['type'], [E_ERROR, E_CORE_ERROR, E_COMPILE_ERROR, E_PARSE])) {
             $exception = new \ErrorException($error['message'], $error['type'], $error['type'], $error['file'], $error['line']);
 
-            $this->logException($exception);
-
             throw $exception;
-        }
-    }
-
-    /**
-     * @param \Exception $exception
-     */
-    public function logException($exception) {
-        if (null !== $this->logger) {
-            $this->logger->log($exception->getCode(), $exception->getMessage(), (array)$exception);
         }
     }
 }
