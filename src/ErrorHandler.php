@@ -38,37 +38,12 @@ class ErrorHandler
         E_PARSE             => 'Parse',
     ];
 
-    /**
-     * @var integer
-     */
-    protected $level;
 
-    /**
-     * @param integer $level
-     * @param boolean $displayErrors
-     */
-    public function __construct($level = null, $displayErrors = null)
+    public static function register()
     {
-        $this->setLevel($level);
-    }
-
-    /**
-     * @param integer $level
-     * @param boolean $displayErrors
-     */
-    public static function register($level = null, $displayErrors = null)
-    {
-        $handler = new static($level, $displayErrors);
+        $handler = new static();
         set_error_handler([$handler, 'handleError']);
         register_shutdown_function([$handler, 'handleFatalError']);
-    }
-
-    /**
-     * @param integer $level
-     */
-    protected function setLevel($level = null)
-    {
-        $this->level = (null === $level) ? error_reporting() : (integer)$level;
     }
 
     /**
@@ -81,9 +56,9 @@ class ErrorHandler
      */
     public function handleError($level, $message, $file, $line)
     {
-        if (0 === $this->level) {
+        if (0 === error_reporting()) {
             return;
-        } elseif ($this->level & $level) {
+        } elseif (error_reporting() & $level) {
             $exception_level = isset($this->levels[$level]) ? $this->levels[$level] : $level;
             $exception       = new \ErrorException("{$exception_level}: {$message} in {$file} line {$line}", $level, $level, $file, $line);
 
