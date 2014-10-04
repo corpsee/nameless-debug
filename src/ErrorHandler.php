@@ -52,18 +52,22 @@ class ErrorHandler
      * @param string  $file
      * @param integer $line
      *
+     * @return boolean
+     *
      * @throws \ErrorException
      */
     public function handleError($level, $message, $file, $line)
     {
         if (0 === error_reporting()) {
-            return;
+            return false;
         } elseif (error_reporting() & $level) {
             $exception_level = isset($this->levels[$level]) ? $this->levels[$level] : $level;
             $exception       = new \ErrorException("{$exception_level}: {$message} in {$file} line {$line}", $level, $level, $file, $line);
 
             throw $exception;
         }
+
+        return false;
     }
 
     /**
