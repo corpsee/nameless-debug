@@ -10,6 +10,8 @@
 
 namespace Nameless\Debug;
 
+use Psr\Log\LoggerInterface;
+
 /**
  * Class ErrorHandler
  *
@@ -38,12 +40,38 @@ class ErrorHandler
         E_PARSE             => 'Parse',
     ];
 
+    /**
+     * @var string
+     */
+    protected $reserved_memory;
 
+    /**
+     * @var LoggerInterface
+     */
+    protected $logger;
+
+    /**
+     * @param LoggerInterface $logger
+     */
+    public function __construct(LoggerInterface $logger = null)
+    {
+        $this->logger          = $logger;
+        $this->reserved_memory = str_repeat('x', 10240);
+    }
+
+    /**
+     * @return ErrorHandler
+     */
     public static function register()
     {
         $handler = new static();
+
         set_error_handler([$handler, 'handleError']);
+
+        ob_start();
         register_shutdown_function([$handler, 'handleFatalError']);
+
+        return $handler;
     }
 
     /**
@@ -75,12 +103,20 @@ class ErrorHandler
      */
     public function handleFatalError()
     {
-        $error = error_get_last();
+        $this->reserved_memory = '';
+        $error                 = error_get_last();
 
-        if (isset($error['type']) && in_array($error['type'], [E_ERROR, E_CORE_ERROR, E_COMPILE_ERROR, E_PARSE])) {
+        if (isset($error['type']) && in_array((integer)$error['type'], [E_ERROR, E_PARSE, E_CORE_ERROR, E_CORE_WARNING, E_COMPILE_ERROR, E_COMPILE_WARNING], true)) {
+            while (ob_get_level()) {
+                ob_end_clean();
+            }
             $exception = new \ErrorException($error['message'], $error['type'], $error['type'], $error['file'], $error['line']);
 
-            throw $exception;
+            $exception_handler = new ExceptionHandler($this->logger);
+            $exception_handler->handleException($exception);
+        } else {
+            ob_end_flush();
         }
+        exit(1);
     }
 }

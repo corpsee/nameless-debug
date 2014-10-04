@@ -35,11 +35,15 @@ class ExceptionHandler
 
     /**
      * @param LoggerInterface $logger
+     *
+     * @return ExceptionHandler
      */
     public static function register(LoggerInterface $logger = null)
     {
         $handler = new static($logger);
         set_exception_handler([$handler, 'handleException']);
+
+        return $handler;
     }
 
     /**
