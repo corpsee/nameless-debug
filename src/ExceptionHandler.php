@@ -49,9 +49,29 @@ class ExceptionHandler
     /**
      * @param \Exception $exception
      */
-    protected function renderException(\Exception $exception)
+    protected function logException($exception) {
+        if (null !== $this->logger) {
+            $this->logger->error((string)$exception, (array)$exception);
+        }
+    }
+
+    /**
+     * @param \Exception $exception
+     * @param \Exception $previous_exception
+     */
+    protected function renderException(\Exception $exception, \Exception $previous_exception = null)
     {
-        echo (string)$exception;
+        $output = (string)$exception . PHP_EOL;
+        if (null !== $previous_exception) {
+            $output .= 'Previous exception:' . PHP_EOL;
+            $output .= (string)$previous_exception . PHP_EOL;
+        }
+
+        if (PHP_SAPI === 'cli') {
+            echo $output;
+        } else {
+            echo '<pre>' . htmlspecialchars($output, ENT_QUOTES) . '</pre>';
+        }
     }
 
     /**
@@ -59,20 +79,16 @@ class ExceptionHandler
      */
     public function handleException(\Exception $exception)
     {
+        restore_error_handler();
+        restore_exception_handler();
+
         try {
             $this->logException($exception);
             $this->renderException($exception);
+            exit(1);
         } catch (\Exception $e) {
-            exit('twice exception!');
-        }
-    }
-
-    /**
-     * @param \Exception $exception
-     */
-    public function logException($exception) {
-        if (null !== $this->logger) {
-            $this->logger->error((string)$exception, (array)$exception);
+            $this->renderException($e, $exception);
+            exit(1);
         }
     }
 }
