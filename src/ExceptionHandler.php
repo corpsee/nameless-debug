@@ -85,7 +85,6 @@ class ExceptionHandler
         try {
             $this->logException($exception);
             $this->renderException($exception);
-            exit(1);
         } catch (\Exception $e) {
             $this->renderException($e, $exception);
             exit(1);
