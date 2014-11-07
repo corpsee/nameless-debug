@@ -73,9 +73,4 @@ class ErrorHandlerTest extends \PHPUnit_Framework_TestCase
     {
         self::testErrorHandlerNotice();
     }
-
-    private function throwFatal()
-    {
-        undefined_function();
-    }
 }
