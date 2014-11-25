@@ -8,12 +8,12 @@
 Nameless debug package
 ======================
 
-Simple and independent component to debug for PHP 5.4+.
+Simple and independent debug component for PHP 5.4+.
 
-Install
--------
+Installation
+------------
 
-You can install Nameless debug package by composer. Add following code to require section of composer.json:
+You can install Nameless debug package by composer. Add following code to "require" section of the composer.json:
 
 ```javascript
 "require": {
@@ -21,7 +21,7 @@ You can install Nameless debug package by composer. Add following code to requir
 }
 ```
 
-And install dependencies by composer:
+And install dependencies using the Composer:
 
 ```bash
 cd path/to/your-project
