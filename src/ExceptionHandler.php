@@ -10,8 +10,6 @@
 
 namespace Nameless\Debug;
 
-use Psr\Log\LoggerInterface;
-
 /**
  * Class ExceptionHandler
  *
@@ -21,38 +19,14 @@ use Psr\Log\LoggerInterface;
 class ExceptionHandler
 {
     /**
-     * @var LoggerInterface
-     */
-    protected $logger;
-
-    /**
-     * @param LoggerInterface $logger
-     */
-    public function __construct(LoggerInterface $logger = null)
-    {
-        $this->logger = $logger;
-    }
-
-    /**
-     * @param LoggerInterface $logger
-     *
      * @return ExceptionHandler
      */
-    public static function register(LoggerInterface $logger = null)
+    public static function register()
     {
-        $handler = new static($logger);
+        $handler = new static();
         set_exception_handler([$handler, 'handleException']);
 
         return $handler;
-    }
-
-    /**
-     * @param \Exception $exception
-     */
-    protected function logException($exception) {
-        if (null !== $this->logger) {
-            $this->logger->error((string)$exception, (array)$exception);
-        }
     }
 
     /**
@@ -79,15 +53,11 @@ class ExceptionHandler
      */
     public function handleException(\Exception $exception)
     {
-        restore_error_handler();
-        restore_exception_handler();
-
         try {
-            $this->logException($exception);
             $this->renderException($exception);
         } catch (\Exception $e) {
             $this->renderException($e, $exception);
-            exit(1);
         }
+        exit(1);
     }
 }

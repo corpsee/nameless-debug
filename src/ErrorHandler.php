@@ -59,13 +59,14 @@ class ErrorHandler
     }
 
     /**
+     * @param LoggerInterface $logger
+     *
      * @return ErrorHandler
      */
-    public static function register()
+    public static function register(LoggerInterface $logger = null)
     {
-        $handler = new static();
+        $handler = new static($logger);
 
-        ini_set('display_errors', 0);
         set_error_handler([$handler, 'handleError']);
         register_shutdown_function([$handler, 'handleFatalError']);
 
@@ -79,6 +80,15 @@ class ErrorHandler
     {
         $exception_handler = new ExceptionHandler($this->logger);
         $exception_handler->handleException($exception);
+    }
+
+    /**
+     * @param \Exception $exception
+     */
+    protected function logException($exception) {
+        if (null !== $this->logger) {
+            $this->logger->error((string)$exception, (array)$exception);
+        }
     }
 
     /**
@@ -97,6 +107,8 @@ class ErrorHandler
             $exception_level = isset($this->levels[$level]) ? $this->levels[$level] : $level;
             $exception       = new \ErrorException("{$exception_level}: {$message} in {$file} line {$line}", $level, $level, $file, $line);
 
+            $this->logException($exception);
+
             $trace = debug_backtrace(0);
             array_shift($trace);
             foreach ($trace as $trace_item) {
@@ -104,7 +116,6 @@ class ErrorHandler
                     $this->handleException($exception);
                 }
             }
-
             throw $exception;
         }
         return false;
@@ -120,6 +131,8 @@ class ErrorHandler
 
         if (isset($error['type']) && in_array((integer)$error['type'], [E_ERROR, E_PARSE, E_CORE_ERROR, E_CORE_WARNING, E_COMPILE_ERROR, E_COMPILE_WARNING], true)) {
             $exception = new \ErrorException($error['message'], $error['type'], $error['type'], $error['file'], $error['line']);
+
+            $this->logException($exception);
             $this->handleException($exception);
         }
     }
