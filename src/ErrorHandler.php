@@ -51,26 +51,26 @@ class ErrorHandler
 
     /**
      * @param LoggerInterface $logger
+     *
+     * @return ErrorHandler
      */
     public function __construct(LoggerInterface $logger = null)
     {
         $this->logger          = $logger;
         $this->reserved_memory = str_repeat('x', 10240);
+
+        return $this;
     }
 
     /**
-     * @param LoggerInterface $logger
-     *
      * @return ErrorHandler
      */
-    public static function register(LoggerInterface $logger = null)
+    public function register()
     {
-        $handler = new static($logger);
+        set_error_handler([$this, 'handleError']);
+        register_shutdown_function([$this, 'handleFatalError']);
 
-        set_error_handler([$handler, 'handleError']);
-        register_shutdown_function([$handler, 'handleFatalError']);
-
-        return $handler;
+        return $this;
     }
 
     /**

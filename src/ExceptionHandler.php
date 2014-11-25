@@ -21,12 +21,19 @@ class ExceptionHandler
     /**
      * @return ExceptionHandler
      */
-    public static function register()
+    public function __construct()
     {
-        $handler = new static();
-        set_exception_handler([$handler, 'handleException']);
+        return $this;
+    }
 
-        return $handler;
+    /**
+     * @return ExceptionHandler
+     */
+    public function register()
+    {
+        set_exception_handler([$this, 'handleException']);
+
+        return $this;
     }
 
     /**
