@@ -39,7 +39,7 @@ error_reporting(-1);
 use Nameless\Debug\ErrorHandler;
 use Nameless\Debug\ExceptionHandler;
 
-$error_handler = (new ErrorHandler())->register($logger);
+$error_handler = (new ErrorHandler($logger))->register();
 if ($debug) {
     $exception_handler = (new ExceptionHandler())->register();
 }
