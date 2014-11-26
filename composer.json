@@ -1,6 +1,6 @@
 {
     "name":        "corpsee/nameless-debug",
-    "description": "Nameless Debug package",
+    "description": "Nameless debug package",
     "license":     "GPLv3",
     "authors":     [
         {
