@@ -8,7 +8,7 @@
 Nameless debug package
 ======================
 
-Simple and independent debug compliant with PSR1, PSR2 and PSR4 component for PHP 5.4+.
+Simple and independent debug component compliant with PSR1, PSR2 and PSR4 for PHP 5.4+.
 
 Installation
 ------------
