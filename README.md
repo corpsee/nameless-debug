@@ -55,5 +55,10 @@ cd path/to/nameless-debug
 ./path/to/phpunit -c ./phpunit.xml
 ```
 
+License
+-------
+
+The PHPell is open source software licensed under the GPLv3 license.
+
 
 
