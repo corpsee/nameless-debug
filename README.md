@@ -58,7 +58,7 @@ cd path/to/nameless-debug
 License
 -------
 
-The PHPell is open source software licensed under the GPLv3 license.
+The Nameless debug package is open source software licensed under the GPLv3 license.
 
 
 
