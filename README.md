@@ -1,4 +1,4 @@
-[![Build Status](http://pci.corpsee.com/build-status/image/4?branch=master)](http://pci.corpsee.com/build-status/view/4?branch=master)
+[![Build Status](http://phpci.corpsee.com/build-status/image/4?branch=master)](http://phpci.corpsee.com/build-status/view/4?branch=master)
 [![Build Status](https://travis-ci.org/corpsee/nameless-debug.svg?branch=master)](https://travis-ci.org/corpsee/nameless-debug)
 [![Latest Stable Version](https://poser.pugx.org/corpsee/nameless-debug/v/stable.svg)](https://packagist.org/packages/corpsee/nameless-debug)
 [![Latest Unstable Version](https://poser.pugx.org/corpsee/nameless-debug/v/unstable.svg)](https://packagist.org/packages/corpsee/nameless-debug)
@@ -8,7 +8,7 @@
 Nameless debug package
 ======================
 
-Simple and independent debug compliant with PSR1, PSR2 and PSR4 component for PHP 5.4+.
+Simple and independent debug component compliant with PSR1, PSR2 and PSR4 for PHP 5.4+.
 
 Installation
 ------------
@@ -54,6 +54,11 @@ You can run the unit tests with the following command:
 cd path/to/nameless-debug
 ./path/to/phpunit -c ./phpunit.xml
 ```
+
+License
+-------
+
+The Nameless debug package is open source software licensed under the GPLv3 license.
 
 
 

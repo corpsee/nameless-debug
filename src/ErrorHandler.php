@@ -105,7 +105,7 @@ class ErrorHandler
     {
         if (error_reporting() & $level) {
             $exception_level = isset($this->levels[$level]) ? $this->levels[$level] : $level;
-            $exception       = new \ErrorException("{$exception_level}: {$message} in {$file} line {$line}", $level, $level, $file, $line);
+            $exception       = new \ErrorException("{$exception_level}: {$message}", $level, $level, $file, $line);
 
             $this->logException($exception);
 
@@ -130,7 +130,7 @@ class ErrorHandler
         $error                 = error_get_last();
 
         if (isset($error['type']) && in_array((integer)$error['type'], [E_ERROR, E_PARSE, E_CORE_ERROR, E_CORE_WARNING, E_COMPILE_ERROR, E_COMPILE_WARNING], true)) {
-            $exception = new \ErrorException($error['message'], $error['type'], $error['type'], $error['file'], $error['line']);
+            $exception = new \ErrorException("{$this->levels[$error['type']]}: {$error['message']}", $error['type'], $error['type'], $error['file'], $error['line']);
 
             $this->logException($exception);
             $this->handleException($exception);
