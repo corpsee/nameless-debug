@@ -1,4 +1,4 @@
-[![Build Status](http://pci.corpsee.com/build-status/image/4?branch=master)](http://pci.corpsee.com/build-status/view/4?branch=master)
+[![Build Status](http://phpci.corpsee.com/build-status/image/4?branch=master)](http://phpci.corpsee.com/build-status/view/4?branch=master)
 [![Build Status](https://travis-ci.org/corpsee/nameless-debug.svg?branch=master)](https://travis-ci.org/corpsee/nameless-debug)
 [![Latest Stable Version](https://poser.pugx.org/corpsee/nameless-debug/v/stable.svg)](https://packagist.org/packages/corpsee/nameless-debug)
 [![Latest Unstable Version](https://poser.pugx.org/corpsee/nameless-debug/v/unstable.svg)](https://packagist.org/packages/corpsee/nameless-debug)
