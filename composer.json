@@ -1,7 +1,7 @@
 {
     "name":        "corpsee/nameless-debug",
     "description": "Nameless debug package",
-    "license":     "GPLv3",
+    "license":     "GPL-3.0",
     "authors":     [
         {
             "name":  "Corpsee",
