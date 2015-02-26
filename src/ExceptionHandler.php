@@ -83,6 +83,5 @@ class ExceptionHandler
         } catch (\Exception $e) {
             $this->renderException($e, $exception);
         }
-        exit(1);
     }
 }
