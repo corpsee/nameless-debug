@@ -9,7 +9,7 @@
 Nameless debug package
 ======================
 
-Simple and independent debug component compliant with PSR1, PSR2 and PSR4 for PHP 5.4+.
+Simple and independent debug component compliant with PSR-1, PSR-2 and PSR-4 for PHP 5.4+.
 
 Installation
 ------------
@@ -59,7 +59,7 @@ cd path/to/nameless-debug
 License
 -------
 
-The Nameless debug package is open source software licensed under the GPLv3 license.
+The Nameless debug package is open source software licensed under the GPL-3.0 license.
 
 
 
