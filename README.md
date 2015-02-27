@@ -4,7 +4,7 @@
 [![Latest Unstable Version](https://poser.pugx.org/corpsee/nameless-debug/v/unstable.svg)](https://packagist.org/packages/corpsee/nameless-debug)
 [![Total Downloads](https://poser.pugx.org/corpsee/nameless-debug/downloads.svg)](https://packagist.org/packages/corpsee/nameless-debug)
 [![License](https://poser.pugx.org/corpsee/nameless-debug/license.svg)](https://packagist.org/packages/corpsee/nameless-debug)
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/31e77222-8786-446a-adee-209163ab1b37/mini.png)](https://insight.sensiolabs.com/projects/31e77222-8786-446a-adee-209163ab1b37)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/c9cec137-2be1-4e94-86dd-bd530952a9b8/mini.png)](https://insight.sensiolabs.com/projects/c9cec137-2be1-4e94-86dd-bd530952a9b8)
 
 Nameless debug package
 ======================
