@@ -8,7 +8,8 @@ class ErrorHandlerTest extends \PHPUnit_Framework_TestCase
 {
     public function testErrorHandlerNotice()
     {
-        $error_handler = (new ErrorHandler())->register();
+        $error_handler = new ErrorHandler();
+        $error_handler->register();
         try {
             $this->throwNotice();
         } catch (\ErrorException $exception) {
@@ -20,7 +21,8 @@ class ErrorHandlerTest extends \PHPUnit_Framework_TestCase
 
     public function testErrorHandlerWarning()
     {
-        $error_handler = (new ErrorHandler())->register();
+        $error_handler = new ErrorHandler();
+        $error_handler->register();
         try {
             $this->throwWarning();
         } catch (\ErrorException $exception) {
@@ -32,7 +34,8 @@ class ErrorHandlerTest extends \PHPUnit_Framework_TestCase
 
     public function testErrorHandlerDeprecated()
     {
-        $error_handler = (new ErrorHandler())->register();
+        $error_handler = new ErrorHandler();
+        $error_handler->register();
         try {
             $this->throwDeprecated();
         } catch (\ErrorException $exception) {
@@ -44,7 +47,8 @@ class ErrorHandlerTest extends \PHPUnit_Framework_TestCase
 
     public function testErrorHandlerStrict()
     {
-        $error_handler = (new ErrorHandler())->register();
+        $error_handler = new ErrorHandler();
+        $error_handler->register();
         try {
             $this->throwStrict();
         } catch (\ErrorException $exception) {
