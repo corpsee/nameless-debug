@@ -49,7 +49,14 @@ class ExceptionHandler
             }
             echo $output;
         } else {
-            $pretty_output = "<html><head><title>Uncaught Exceptions</title><style>body{font-family:sans-serif;color:#333;margin: 2em;}code{background:#ccc;padding:2px 6px}</style></head><body><h1>Uncaught Exceptions</h1>";
+            $pretty_output = "
+<html>
+    <head>
+        <title>Uncaught Exceptions</title>
+        <style>body{font-family:sans-serif;color:#333;margin:2em;}code{background:#ccc;padding:2px 6px}</style>
+    </head>
+<body>
+    <h1>Uncaught Exceptions</h1>";
             $pretty_output .= $this->prettyException($exception);
             if (null !== $previous_exception) {
                 $pretty_output .= $this->prettyException($previous_exception);
@@ -70,7 +77,15 @@ class ExceptionHandler
         $line    = (integer)$exception->getLine();
         $stack   = htmlspecialchars($exception->getTraceAsString(), ENT_QUOTES);
 
-        return "<h2>{$message}</h2><p><code>In file: '{$file}' on line #{$line}</code></p><h3>Stack trace:</h3><p><pre>{$stack}</pre></p>";
+        return "
+<h2>{$message}</h2>
+<p>
+    <code>In file: '{$file}' on line #{$line}</code>
+</p>
+<h3>Stack trace:</h3>
+<p>
+    <pre>{$stack}</pre>
+</p>";
     }
 
     /**

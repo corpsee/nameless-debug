@@ -128,10 +128,18 @@ class ErrorHandler
     public function handleFatalError()
     {
         $this->reserved_memory = '';
-        $error                 = error_get_last();
 
-        if (isset($error['type']) && in_array((integer)$error['type'], [E_ERROR, E_PARSE, E_CORE_ERROR, E_CORE_WARNING, E_COMPILE_ERROR, E_COMPILE_WARNING], true)) {
-            $exception = new \ErrorException("{$this->levels[$error['type']]}: {$error['message']}", $error['type'], $error['type'], $error['file'], $error['line']);
+        $error  = error_get_last();
+        $errors = [E_ERROR, E_PARSE, E_CORE_ERROR, E_CORE_WARNING, E_COMPILE_ERROR, E_COMPILE_WARNING];
+
+        if (isset($error['type']) && in_array((integer)$error['type'], $errors, true)) {
+            $exception = new \ErrorException(
+                "{$this->levels[$error['type']]}: {$error['message']}",
+                $error['type'],
+                $error['type'],
+                $error['file'],
+                $error['line']
+            );
 
             $this->logException($exception);
             $this->handleException($exception);
