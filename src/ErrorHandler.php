@@ -85,7 +85,8 @@ class ErrorHandler
     /**
      * @param \Exception $exception
      */
-    protected function logException($exception) {
+    protected function logException($exception)
+    {
         if (null !== $this->logger) {
             $this->logger->error((string)$exception, (array)$exception);
         }
