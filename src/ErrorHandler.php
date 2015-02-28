@@ -23,7 +23,7 @@ class ErrorHandler
     /**
      * @var array
      */
-    protected $levels = [
+    protected $levels = array(
         E_WARNING           => 'E_WARNING',
         E_NOTICE            => 'E_NOTICE',
         E_USER_ERROR        => 'E_USER_ERROR',
@@ -37,7 +37,7 @@ class ErrorHandler
         E_CORE_ERROR        => 'E_CORE_ERROR',
         E_COMPILE_ERROR     => 'E_COMPILE_ERROR',
         E_PARSE             => 'E_PARSE',
-    ];
+    );
 
     /**
      * @var string
@@ -67,8 +67,8 @@ class ErrorHandler
      */
     public function register()
     {
-        set_error_handler([$this, 'handleError']);
-        register_shutdown_function([$this, 'handleFatalError']);
+        set_error_handler(array($this, 'handleError'));
+        register_shutdown_function(array($this, 'handleFatalError'));
 
         return $this;
     }
