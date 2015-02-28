@@ -31,7 +31,7 @@ class ExceptionHandler
      */
     public function register()
     {
-        set_exception_handler(array($this, 'handleException'));
+        set_exception_handler([$this, 'handleException']);
 
         return $this;
     }
