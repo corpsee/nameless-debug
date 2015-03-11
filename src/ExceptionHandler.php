@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Nameless Debug package
+ * Nameless debug package
  *
  * @copyright Copyright 2014, Corpsee.
  * @license   https://github.com/corpsee/nameless-debug/blob/master/LICENSE
