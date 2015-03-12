@@ -3,9 +3,10 @@
 /**
  * Nameless debug package
  *
- * @copyright Copyright 2014, Corpsee.
- * @license   https://github.com/corpsee/nameless-debug/blob/master/LICENSE
- * @link      https://github.com/corpsee/nameles-debug
+ * @package Nameless debug
+ * @author  Corpsee <poisoncorpsee@gmail.com>
+ * @license https://github.com/corpsee/nameless-source/blob/master/LICENSE
+ * @link    https://github.com/corpsee/nameless-source
  */
 
 namespace Nameless\Debug;
@@ -13,7 +14,6 @@ namespace Nameless\Debug;
 /**
  * Class ExceptionHandler
  *
- * @package Nameless Debug
  * @author  Corpsee <poisoncorpsee@gmail.com>
  */
 class ExceptionHandler
