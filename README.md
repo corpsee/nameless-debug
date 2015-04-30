@@ -17,7 +17,7 @@ You can install Nameless debug package by composer. Add following code to "requi
 
 ```javascript
 "require": {
-    "corpsee/nameless-debug": "1.*"
+    "corpsee/nameless-debug": "1.0.*"
 }
 ```
 
