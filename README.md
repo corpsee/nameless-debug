@@ -1,10 +1,9 @@
-[![Build Status](http://phpci.corpsee.com/build-status/image/4?branch=master)](http://phpci.corpsee.com/build-status/view/4?branch=master)
-[![Build Status](https://travis-ci.org/corpsee/nameless-debug.svg?branch=master)](https://travis-ci.org/corpsee/nameless-debug)
-[![Latest Stable Version](https://poser.pugx.org/corpsee/nameless-debug/v/stable.svg)](https://packagist.org/packages/corpsee/nameless-debug)
-[![Latest Unstable Version](https://poser.pugx.org/corpsee/nameless-debug/v/unstable.svg)](https://packagist.org/packages/corpsee/nameless-debug)
-[![Total Downloads](https://poser.pugx.org/corpsee/nameless-debug/downloads.svg)](https://packagist.org/packages/corpsee/nameless-debug)
-[![License](https://poser.pugx.org/corpsee/nameless-debug/license.svg)](https://packagist.org/packages/corpsee/nameless-debug)
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/c9cec137-2be1-4e94-86dd-bd530952a9b8/mini.png)](https://insight.sensiolabs.com/projects/c9cec137-2be1-4e94-86dd-bd530952a9b8)
+[![PHPCI](http://phpci.corpsee.com/build-status/image/4?branch=master&label=PHPCI&style=flat-square)](http://phpci.corpsee.com/build-status/view/4?branch=master)
+[![Travis](https://img.shields.io/travis/corpsee/nameless-debug/master.svg?label=Travis&style=flat-square)](https://travis-ci.org/corpsee/nameless-debug?branch=master)
+[![Latest Version](https://img.shields.io/packagist/v/corpsee/nameless-debug.svg?label=Version&style=flat-square)](https://packagist.org/packages/corpsee/nameless-debug)
+[![Total downloads](https://img.shields.io/packagist/td/corpsee/nameless-debug.svg?label=Downloads&style=flat-square)](https://packagist.org/packages/corpsee/nameless-debug)
+[![License](https://img.shields.io/packagist/l/corpsee/nameless-debug.svg?label=License&style=flat-square)](https://packagist.org/packages/corpsee/nameless-debug)
+[![SensioLabs Insight](https://img.shields.io/sensiolabs/i/c9cec137-2be1-4e94-86dd-bd530952a9b8.svg?label=Insight&style=flat-square)](https://insight.sensiolabs.com/projects/c9cec137-2be1-4e94-86dd-bd530952a9b8)
 
 Nameless debug package
 ======================
