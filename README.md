@@ -26,7 +26,7 @@ And install dependencies using the Composer:
 
 ```bash
 cd path/to/your-project
-php ./path/to/composer.phar install
+php composer.phar install
 ```
 
 Usage
@@ -40,10 +40,15 @@ error_reporting(-1);
 use Nameless\Debug\ErrorHandler;
 use Nameless\Debug\ExceptionHandler;
 
-$error_handler = (new ErrorHandler($logger))->register();
+$exception_handler = null;
 if ($debug) {
     $exception_handler = (new ExceptionHandler())->register();
+} else {
+    set_exception_handler(function(\Exception $exception) {
+        exit('Server error');
+    });
 }
+$error_handler = (new ErrorHandler($exception_handler, $logger))->register();
 ```
 
 Tests
@@ -60,6 +65,3 @@ License
 -------
 
 The Nameless debug package is open source software licensed under the GPL-3.0 license.
-
-
-
