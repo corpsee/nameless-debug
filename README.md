@@ -13,7 +13,7 @@ Simple and independent debug component compliant with PSR-1, PSR-2 and PSR-4 for
 Installation
 ------------
 
-You can install Nameless debug package by composer. Add following code to "require" section of the composer.json:
+You can install Nameless debug package by composer. Add following code to "require" or "require-dev" section of the composer.json:
 
 ```javascript
 "require": {
@@ -53,11 +53,11 @@ $error_handler = (new ErrorHandler($exception_handler, $logger))->register();
 Tests
 -----
 
-You can run the unit tests with the following command:
+You can run the unit tests with the following commands:
 
 ```bash
 cd path/to/nameless-debug
-./path/to/phpunit -c ./phpunit.xml
+./vendor/bin/phpunit -c ./phpunit.xml
 ```
 
 License
