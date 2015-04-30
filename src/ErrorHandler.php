@@ -94,7 +94,8 @@ class ErrorHandler
             $this->exception_handler->handleException($exception);
         }
 
-        echo (string)$exception . PHP_EOL; exit(1);
+        echo (string)$exception . PHP_EOL;
+        exit(1);
     }
 
     /**
