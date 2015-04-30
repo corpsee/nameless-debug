@@ -50,13 +50,23 @@ class ErrorHandler
     protected $logger;
 
     /**
-     * @param LoggerInterface $logger
+     * @var ExceptionHandler
+     */
+    protected $exception_handler;
+
+    /**
+     * @param ExceptionHandler $exception_handler
+     * @param LoggerInterface  $logger
      *
      * @return ErrorHandler
      */
-    public function __construct(LoggerInterface $logger = null)
+    public function __construct(ExceptionHandler $exception_handler = null, LoggerInterface $logger = null)
     {
-        $this->logger          = $logger;
+        ini_set('display_errors', 0);
+
+        $this->exception_handler = $exception_handler;
+        $this->logger            = $logger;
+
         $this->reserved_memory = str_repeat('x', 10240);
 
         return $this;
@@ -74,21 +84,26 @@ class ErrorHandler
     }
 
     /**
-     * @param \Exception $exception
+     * @param \ErrorException $exception
      */
-    protected function handleException(\Exception $exception)
+    protected function handleException(\ErrorException $exception)
     {
-        $exception_handler = new ExceptionHandler($this->logger);
-        $exception_handler->handleException($exception);
+        $this->logException($exception);
+
+        if (null !== $this->exception_handler) {
+            $this->exception_handler->handleException($exception);
+        }
+
+        echo (string)$exception . PHP_EOL; exit(1);
     }
 
     /**
-     * @param \Exception $exception
+     * @param \ErrorException $exception
      */
-    protected function logException($exception)
+    protected function logException(\ErrorException $exception)
     {
         if (null !== $this->logger) {
-            $this->logger->error((string)$exception, (array)$exception);
+            $this->logger->error((string)$exception);
         }
     }
 
@@ -108,17 +123,18 @@ class ErrorHandler
             $exception_level = isset($this->levels[$level]) ? $this->levels[$level] : $level;
             $exception       = new \ErrorException("{$exception_level}: {$message}", $level, $level, $file, $line);
 
-            $this->logException($exception);
-
-            $trace = debug_backtrace(0);
+            $trace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);
             array_shift($trace);
             foreach ($trace as $trace_item) {
                 if ($trace_item['function'] == '__toString') {
                     $this->handleException($exception);
                 }
             }
+
+            $this->logException($exception);
             throw $exception;
         }
+
         return false;
     }
 
@@ -141,7 +157,6 @@ class ErrorHandler
                 $error['line']
             );
 
-            $this->logException($exception);
             $this->handleException($exception);
         }
     }
