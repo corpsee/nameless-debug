@@ -15,12 +15,11 @@ matrix:
   fast_finish: true
 
 install:
-  - pecl install xdebug
   - composer selfupdate
   - composer install
 
 script:
-  - phpunit --configuration phpunit.xml --coverage-text
+  - phpunit --configuration phpunit.xml
 
 notifications:
   email:
