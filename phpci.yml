@@ -35,7 +35,6 @@ test:
 failure:
   email:
     committer: true
-    default_mailto_address: poisoncorpsee@gmail.com
 
 complete:
   email:

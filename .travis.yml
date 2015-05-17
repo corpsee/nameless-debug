@@ -9,11 +9,13 @@ php:
 
 matrix:
   allow_failures:
-    - php:
-      - hhvm
-      - 7.0
+    - php: 7.0
+    - php: hhvm
+
+  fast_finish: true
 
 install:
+  - pecl install
   - composer selfupdate
   - composer install
 
@@ -22,5 +24,8 @@ script:
 
 notifications:
   email:
+    recipients:
+      - poisoncorpsee@gmail.com
+
     on_success: always
     on_failure: always
