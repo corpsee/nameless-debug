@@ -15,7 +15,7 @@ matrix:
   fast_finish: true
 
 install:
-  - pecl install
+  - pecl install xdebug
   - composer selfupdate
   - composer install
 
