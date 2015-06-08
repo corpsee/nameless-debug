@@ -5,8 +5,8 @@
 [![License](https://img.shields.io/packagist/l/corpsee/nameless-debug.svg?label=License&style=flat-square)](https://packagist.org/packages/corpsee/nameless-debug)
 [![SensioLabs Insight](https://img.shields.io/sensiolabs/i/c9cec137-2be1-4e94-86dd-bd530952a9b8.svg?label=Insight&style=flat-square)](https://insight.sensiolabs.com/projects/c9cec137-2be1-4e94-86dd-bd530952a9b8)
 
-Nameless debug package
-======================
+Nameless debug
+==============
 
 Simple and independent debug component compliant with PSR-1, PSR-2, PSR-4 and Composer for PHP 5.4+.
 
