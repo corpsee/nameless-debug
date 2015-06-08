@@ -63,4 +63,4 @@ cd path/to/nameless-debug
 License
 -------
 
-The Nameless debug package is open source software licensed under the GPL-3.0 license.
+The Nameless debug is open source software licensed under the GPL-3.0 license.
