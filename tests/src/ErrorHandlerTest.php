@@ -12,9 +12,9 @@ class ErrorHandlerTest extends \PHPUnit_Framework_TestCase
         try {
             $this->throwNotice();
         } catch (\ErrorException $exception) {
-            $this->assertEquals(E_NOTICE, $exception->getSeverity());
-            $this->assertEquals(__FILE__, $exception->getFile());
-            $this->assertRegexp('/^E_NOTICE:/', $exception->getMessage());
+            self::assertEquals(E_NOTICE, $exception->getSeverity());
+            self::assertEquals(__FILE__, $exception->getFile());
+            self::assertRegExp('/^E_NOTICE:/', $exception->getMessage());
         }
     }
 
@@ -24,9 +24,9 @@ class ErrorHandlerTest extends \PHPUnit_Framework_TestCase
         try {
             $this->throwWarning();
         } catch (\ErrorException $exception) {
-            $this->assertEquals(E_WARNING, $exception->getSeverity());
-            $this->assertEquals(__FILE__, $exception->getFile());
-            $this->assertRegexp('/^E_WARNING:/', $exception->getMessage());
+            self::assertEquals(E_WARNING, $exception->getSeverity());
+            self::assertEquals(__FILE__, $exception->getFile());
+            self::assertRegExp('/^E_WARNING:/', $exception->getMessage());
         }
     }
 
@@ -36,9 +36,9 @@ class ErrorHandlerTest extends \PHPUnit_Framework_TestCase
         try {
             $this->throwDeprecated();
         } catch (\ErrorException $exception) {
-            $this->assertEquals(E_DEPRECATED, $exception->getSeverity());
-            $this->assertEquals(__FILE__, $exception->getFile());
-            $this->assertRegexp('/^E_DEPRECATED:/', $exception->getMessage());
+            self::assertEquals(E_DEPRECATED, $exception->getSeverity());
+            self::assertEquals(__FILE__, $exception->getFile());
+            self::assertRegExp('/^E_DEPRECATED:/', $exception->getMessage());
         }
     }
 
@@ -48,9 +48,9 @@ class ErrorHandlerTest extends \PHPUnit_Framework_TestCase
         try {
             $this->throwStrict();
         } catch (\ErrorException $exception) {
-            $this->assertEquals(E_STRICT, $exception->getSeverity());
-            $this->assertEquals(__FILE__, $exception->getFile());
-            $this->assertRegexp('/^E_STRICT:/', $exception->getMessage());
+            self::assertEquals(E_STRICT, $exception->getSeverity());
+            self::assertEquals(__FILE__, $exception->getFile());
+            self::assertRegExp('/^E_STRICT:/', $exception->getMessage());
         }
     }
 
