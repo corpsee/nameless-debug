@@ -13,7 +13,7 @@ Simple and independent debug component compliant with PSR-1, PSR-2, PSR-4 and Co
 Installation
 ------------
 
-You can install Nameless debug package by composer. Add following code to "require" or "require-dev" section of the composer.json:
+You can install Nameless debug by composer. Add following code to "require" or "require-dev" section of the composer.json:
 
 ```javascript
 "require": {

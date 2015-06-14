@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Nameless debug package
+ * Nameless debug
  *
  * @package Nameless debug
  * @author  Corpsee <poisoncorpsee@gmail.com>
