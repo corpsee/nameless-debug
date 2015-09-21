@@ -36,9 +36,11 @@ class ErrorHandlerTest extends \PHPUnit_Framework_TestCase
         try {
             $this->throwDeprecated();
         } catch (\ErrorException $exception) {
-            self::assertEquals(E_DEPRECATED, $exception->getSeverity());
-            self::assertEquals(__FILE__, $exception->getFile());
-            self::assertRegExp('/^E_DEPRECATED:/', $exception->getMessage());
+            if (version_compare(phpversion(), '7', '<=')) {
+                self::assertEquals(E_DEPRECATED, $exception->getSeverity());
+                self::assertEquals(__FILE__, $exception->getFile());
+                self::assertRegExp('/^E_DEPRECATED:/', $exception->getMessage());
+            }
         }
     }
 
@@ -66,7 +68,9 @@ class ErrorHandlerTest extends \PHPUnit_Framework_TestCase
 
     private function throwDeprecated()
     {
-        split('[/.-]', "06/11/2014");
+        if (version_compare(phpversion(), '7', '<=')) {
+            split('[/.-]', "06/11/2014");
+        }
     }
 
     private function throwStrict()
