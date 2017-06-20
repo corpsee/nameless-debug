@@ -1,5 +1,5 @@
-[![PHPCI](http://phpci.corpsee.com/build-status/image/4?branch=master&label=PHPCI&style=flat-square)](http://phpci.corpsee.com/build-status/view/4?branch=master)
-[![Travis](https://img.shields.io/travis/corpsee/nameless-debug/master.svg?label=Travis&style=flat-square)](https://travis-ci.org/corpsee/nameless-debug?branch=master)
+[![PHP Censor](http://ci.php-censor.info/build-status/image/5?branch=master&label=PHPCensor&style=flat-square)](http://ci.php-censor.info/build-status/view/5?branch=master)
+[![Travis CI](https://img.shields.io/travis/corpsee/nameless-debug/master.svg?label=Travis&style=flat-square)](https://travis-ci.org/corpsee/nameless-debug?branch=master)
 [![Latest Version](https://img.shields.io/packagist/v/corpsee/nameless-debug.svg?label=Version&style=flat-square)](https://packagist.org/packages/corpsee/nameless-debug)
 [![Total downloads](https://img.shields.io/packagist/dt/corpsee/nameless-debug.svg?label=Downloads&style=flat-square)](https://packagist.org/packages/corpsee/nameless-debug)
 [![License](https://img.shields.io/packagist/l/corpsee/nameless-debug.svg?label=License&style=flat-square)](https://packagist.org/packages/corpsee/nameless-debug)
