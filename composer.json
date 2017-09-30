@@ -35,7 +35,7 @@
   "require-dev": {
     "symfony/yaml":                      "~2.1",
     "phpdocumentor/reflection-docblock": "~2.0",
-    "doctrine/instantiator":             "~1.0",
+    "doctrine/instantiator":             "1.0.*",
     "phpunit/phpunit":                   "4.8.*"
   }
 }
