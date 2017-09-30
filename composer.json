@@ -1,26 +1,41 @@
 {
-  "name":        "corpsee/nameless-debug",
-  "description": "Nameless debug",
-  "license":     "GPL-3.0",
-  "authors": [
+  "name":              "corpsee/nameless-debug",
+  "description":       "Simple and independent PHP debug component compliant with PSR-1, PSR-2, PSR-4 and Composer",
+  "minimum-stability": "stable",
+  "type":              "library",
+  "keywords":          ["php", "debug", "php-errors", "errors", "exceptions", "error-handling", "exception-handling"],
+  "homepage":          "https://github.com/corpsee/nameless-debug",
+  "license":           "GPL-3.0",
+  "authors":           [
     {
-      "name":  "Corpsee",
-      "email": "poisoncorpsee@gmail.com"
+      "name":     "Dmitry Khomutov",
+      "email":    "poisoncorpsee@gmail.com",
+      "homepage": "http://corpsee.com",
+      "role":     "Developer"
     }
   ],
+  "support": {
+    "issues": "https://github.com/corpsee/nameless-debug/issues",
+    "source": "https://github.com/corpsee/nameless-debug"
+  },
   "autoload": {
     "psr-4": {
-      "Nameless\\Debug\\":        "src",
+      "Nameless\\Debug\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
       "Nameless\\Debug\\Tests\\": "tests/src"
     }
   },
   "require": {
     "php":     ">=5.4.0",
-    "psr/log": "1.0.*"
+    "psr/log": "~1.0"
   },
   "require-dev": {
     "symfony/yaml":                      "~2.1",
     "phpdocumentor/reflection-docblock": "~2.0",
+    "doctrine/instantiator":             "~1.0",
     "phpunit/phpunit":                   "4.8.*"
   }
 }

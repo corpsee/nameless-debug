@@ -1,23 +1,24 @@
 [![PHP Censor](http://ci.php-censor.info/build-status/image/5?branch=master&label=PHPCensor&style=flat-square)](http://ci.php-censor.info/build-status/view/5?branch=master)
-[![Travis CI](https://img.shields.io/travis/corpsee/nameless-debug/master.svg?label=Travis&style=flat-square)](https://travis-ci.org/corpsee/nameless-debug?branch=master)
+[![Travis CI](https://img.shields.io/travis/corpsee/nameless-debug/master.svg?label=TravisCI&style=flat-square)](https://travis-ci.org/corpsee/nameless-debug?branch=master)
+[![SensioLabs Insight](https://img.shields.io/sensiolabs/i/c9cec137-2be1-4e94-86dd-bd530952a9b8.svg?label=Insight&style=flat-square)](https://insight.sensiolabs.com/projects/c9cec137-2be1-4e94-86dd-bd530952a9b8)
+[![Codecov](https://img.shields.io/codecov/c/github/corpsee/nameless-debug.svg?label=Codecov&style=flat-square)](https://codecov.io/gh/corpsee/nameless-debug)
 [![Latest Version](https://img.shields.io/packagist/v/corpsee/nameless-debug.svg?label=Version&style=flat-square)](https://packagist.org/packages/corpsee/nameless-debug)
 [![Total downloads](https://img.shields.io/packagist/dt/corpsee/nameless-debug.svg?label=Downloads&style=flat-square)](https://packagist.org/packages/corpsee/nameless-debug)
 [![License](https://img.shields.io/packagist/l/corpsee/nameless-debug.svg?label=License&style=flat-square)](https://packagist.org/packages/corpsee/nameless-debug)
-[![SensioLabs Insight](https://img.shields.io/sensiolabs/i/c9cec137-2be1-4e94-86dd-bd530952a9b8.svg?label=Insight&style=flat-square)](https://insight.sensiolabs.com/projects/c9cec137-2be1-4e94-86dd-bd530952a9b8)
 
 Nameless debug
 ==============
 
-Simple and independent debug component compliant with PSR-1, PSR-2, PSR-4 and Composer for PHP 5.4+.
+Simple and independent PHP debug component compliant with PSR-1, PSR-2, PSR-4 and Composer.
 
 Installation
 ------------
 
-You can install Nameless debug by composer. Add following code to "require" or "require-dev" section of the composer.json:
+You can install Nameless debug by composer. Add following code to "require" section of the `composer.json`:
 
-```javascript
+```json
 "require": {
-    "corpsee/nameless-debug": "1.0.*"
+    "corpsee/nameless-debug": "<version>"
 }
 ```
 
@@ -25,7 +26,7 @@ And install dependencies using the Composer:
 
 ```bash
 cd path/to/your-project
-php composer.phar install
+composer install
 ```
 
 Usage
@@ -57,7 +58,7 @@ You can run the unit tests with the following commands:
 
 ```bash
 cd path/to/nameless-debug
-./vendor/bin/phpunit -c ./phpunit.xml
+./vendor/bin/phpunit
 ```
 
 License
