@@ -6,6 +6,9 @@
 [![Total downloads](https://img.shields.io/packagist/dt/corpsee/nameless-debug.svg?label=Downloads&style=flat-square)](https://packagist.org/packages/corpsee/nameless-debug)
 [![License](https://img.shields.io/packagist/l/corpsee/nameless-debug.svg?label=License&style=flat-square)](https://packagist.org/packages/corpsee/nameless-debug)
 
+**This package is abandoned and no longer maintained. The author suggests using the 
+[symfony/debug](https://github.com/symfony/debug) package instead.**
+
 Nameless debug
 ==============
 
